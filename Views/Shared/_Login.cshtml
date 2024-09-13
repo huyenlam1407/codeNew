@@ -1,0 +1,19 @@
+﻿@using PROJECT.Models;
+
+@if (Session["userID"] != null)
+{
+    <span class="user-menu d-block d-lg-none"><i class="anm anm-user-al" aria-hidden="true"></i></span>
+    <ul class="customer-links list-inline">
+        <li>@Session["userName"]</li>
+        <li><a href=@Url.Action("Logout", "Login")>Đăng Xuất</a></li>
+    </ul>
+
+}
+else
+{
+    <span class="user-menu d-block d-lg-none"><i class="anm anm-user-al" aria-hidden="true"></i></span>
+    <ul class="customer-links list-inline">
+        <li><a href=@Url.Action("Login", "Login")>Đăng Nhập</a></li>
+        <li><a href=@Url.Action("Register", "Login")>Tạo Tài Khoản</a></li>
+    </ul>
+}

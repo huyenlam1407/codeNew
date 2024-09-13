@@ -1,0 +1,91 @@
+﻿@model PROJECT.Models.tblProduct
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Sản phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.codeProduct)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codeProduct)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nameProduct)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nameProduct)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantityProductInput)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantityProductInput)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.priceProductInput)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.priceProductInput)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.priceProductDown)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.priceProductDown)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDStyle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDStyle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imageProduct1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imageProduct1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imageProduct2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imageProduct2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imageProduct3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imageProduct3)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Quay Lại", "SanPham")
+</p>

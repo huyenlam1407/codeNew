@@ -1,0 +1,83 @@
+/* style.css */
+
+
+.containersss {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.arrows {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    opacity: 0.75;
+    z-index: 2;
+}
+
+.arrows.lefts {
+    left: 10px;
+}
+
+.arrows.rights {
+    right: 10px;
+}
+
+.wrappers {
+    height: 100%;
+    display: flex;
+    transform: translateX(0);
+    transition: all 1.5s ease;
+}
+
+.slides {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.img-containers {
+    flex: 1;
+    height: 100%;
+}
+
+.images{
+    height: 80%;
+    width: 80vw;
+}
+
+.info-containers {
+    flex: 1;
+    padding: 50px;
+}
+.titles {
+    font-size: 50px;
+}
+
+.descriptions {
+    margin: 50px 0px;
+    font-size: 20px;
+    letter-spacing: 3px;
+    font-weight: 500;
+    font-family:Tahoma;
+}
+
+.buttons {
+    padding: 10px;
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+}

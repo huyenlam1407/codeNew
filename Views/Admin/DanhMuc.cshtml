@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PROJECT.Models.tblStyle>
+
+@{
+    ViewBag.Title = "Quản lý danh mục";
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
+}
+
+<h2>Trang quản lý danh mục</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create1")
+</p>
+<table class="table">
+    
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nameStyle)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.nameStyle)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit1", new { id = item.ID }) |
+        @Html.ActionLink("Details", "Details1", new { id = item.ID }) |
+        @Html.ActionLink("Delete", "Delete1", new { id = item.ID })
+    </td>
+</tr>
+    }
+
+</table>

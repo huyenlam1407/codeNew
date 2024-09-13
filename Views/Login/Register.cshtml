@@ -1,0 +1,117 @@
+﻿@model PROJECT.Models.tblUser
+
+@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Create an Account &ndash; </title>
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Content/images/favicon.png" />
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="~/Content/css/plugins.css">
+    <!-- Bootstap CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+    <style>
+        .table_login {
+            margin-left: 400px;
+            margin-right: 300px;
+            width: 600px;
+        }
+
+        .sm_login {
+            width: 100px;
+            margin: 30px;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body class="page-template belle">
+    <!--Body Content-->
+    <div id="page-content">
+        <!--Page Title-->
+        <div class="page section-header text-center">
+            <div class="page-title">
+                <div class="wrapper"><h1 class="page-width">Tạo tài khoản</h1></div>
+            </div>
+        </div>
+        <!--End Page Title-->
+        @using (Html.BeginForm("AuthenRegister", "Login", FormMethod.Post))
+        {
+    <table class="table_login">
+
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.userName)</th>
+            <td>
+                @Html.TextBoxFor(m => m.userName)
+            </td>
+            <td style="color:red;">
+                <em>@Html.ValidationMessageFor(m => m.userName)</em>
+
+            </td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.userPass)</th>
+            <td>
+                @Html.PasswordFor(m => m.userPass)
+            </td>
+            <td style="color:red;">
+                <em>@Html.ValidationMessageFor(m => m.userPass)</em>
+
+            </td>
+
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.rePass)</th>
+            <td>
+                @Html.PasswordFor(m => m.rePass)
+            </td>
+            <td style="color:red;">
+                <em> @Html.ValidationMessageFor(m => m.rePass)</em>
+
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <input style="margin-left:170px;" type="submit" value="Đăng ký" class="sm_login" />
+            </td>
+        </tr>
+
+    </table>
+          
+         }
+
+        </div>
+    
+    <!--End Body Content-->
+    <!--Scoll Top-->
+    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+    <!--End Scoll Top-->
+    <!-- Including Jquery -->
+    <script src="~/Scripts/js/vendor/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/js/vendor/jquery.cookie.js"></script>
+    <script src="~/Scripts/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="~/Scripts/js/vendor/wow.min.js"></script>
+    <!-- Including Javascript -->
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/plugins.js"></script>
+    <script src="~/Scripts/js/popper.min.js"></script>
+    <script src="~/Scripts/js/lazysizes.js"></script>
+    <script src="~/Scripts/js/main.js"></script>
+</body>
+
+
+</html>
+
+

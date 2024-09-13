@@ -1,0 +1,290 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/cshtml; charset=utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+   
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/modernizr")
+   
+    <link href="~/Content/css/loading.css" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Content/images/favicon.png" />
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="~/Content/css/plugins.css" />
+
+    <!-- Bootstap CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader");
+            loader.classList.add("loader-hidden");
+            loader.addEventListener("transitionend", () => {
+                document.body.removeChild("loader");
+            })
+        })
+    </script>
+    <style>
+        .center_search {
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 8px;
+            width: 500px;
+        }
+
+        .search_container {
+            border-radius: 10px;
+            height: 35px;
+            width: 380px;
+            border: solid gainsboro;
+            padding: 5px;
+            margin-right: 20px;
+        }
+
+        .search_input {
+            display: flex;
+            width: 550px;
+            height: 20px;
+        }
+
+        .buttonnhap {
+            width: 440px;
+            height: 30px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+    <body class="template-index belle home5-cosmetic">
+            <!--End Search Form Drawer-->
+            <!--Top Header-->
+            <div class="top-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-10 col-sm-8 col-md-5 col-lg-4">
+                            <div class="currency-picker">
+                                <span class="selected-currency">VNĐ</span>
+                                <ul id="currencies">
+                                </ul>
+                            </div>
+                            <div class="language-dropdown">
+                                <span class="language-dd">Tiếng Việt</span>
+                                <ul id="language">
+                                </ul>
+                            </div>
+                            <p class="phone-no"><i class="anm anm-phone-s"></i> +440 0(111) 044 833</p>
+                        </div>
+                        <div class="col-sm-4 col-md-4 col-lg-4 d-none d-lg-none d-md-block d-lg-block">
+                            <div class="text-center"><p class="top-header_middle-text"> Mua sắm </p></div>
+                        </div>
+                        <div class="col-2 col-sm-4 col-md-3 col-lg-4 text-right">
+                           @Html.Partial("_Login")
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Top Header-->
+           
+            <!--Header-->
+            <div class="header-wrap classicHeader animated d-flex">
+
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <!--Desktop Logo-->
+                        <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
+                            <a href="@Url.Action("Index", "Home")">
+                                <img src="~/Content/images/logo.svg" alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
+                            </a>
+                        </div>
+                        <!--End Desktop Logo-->
+                        <div class="col-2 col-sm-3 col-md-3 col-lg-8">
+                            <div class="d-block d-lg-none">
+                                <button type="button" class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open">
+                                    <i class="icon anm anm-times-l"></i>
+                                    <i class="anm anm-bars-r"></i>
+                                </button>
+                            </div>
+                            <!--Desktop Menu-->
+                            <nav class="grid__item" id="AccessibleNav">
+                                <!-- for mobile -->
+                                <ul id="siteNav" class="site-nav medium right hidearrow">
+                                    <li class="lvl1 parent megamenu">
+                                        <a href="@Url.Action("Index", "Home")"><b>Trang chủ</b> <i class="anm anm-angle-down-l"></i></a>
+
+                                    </li> 
+                                    <li class="lvl1 parent dropdown">
+                                        <a> <b>Quản lý</b> <i class="anm anm-angle-down-l"></i></a>
+                                        <ul class="dropdown">
+                                            <li>
+                                                <a href="@Url.Action("DonHang", "Admin")"class="site-nav">Đăng nhập</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("DanhMuc", "Admin")"class="site-nav">QL Danh mục</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("SanPham", "Admin")" class="site-nav">Sản phẩm</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="lvl1 parent dropdown">
+                                        <a href="#"> <b>Thông Tin</b> <i class="anm anm-angle-down-l"></i></a>
+                                        <ul class="dropdown">
+                                            <li>
+                                                <a href="@Url.Action("about_us", "Home")" class="site-nav">Giới thiệu về chúng tôi</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("cart", "Home")" class="site-nav">Giỏ hàng</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("faqs", "Home")" class="site-nav">Phản hồi khách hàng</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <!--End Header-->
+                                    <!--End Center-->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="center_search">
+
+
+                    @if (Model != null)
+                    {
+                        using (Html.BeginForm("Index", "Search", FormMethod.Get))
+                        {
+
+                            <input type="text" class="buttonnhap" value="Search" name="Search" style="margin-right:10px;" />
+                            <input type="submit" value="Go" class="buttonnhap" style="display:none;width:0px;" />
+
+                        }
+
+
+                    }
+
+                    <div class="site-cart" style="padding-right:7px;">
+
+                        <a href="@Url.Action("ShowToCart", "ShoppingCart")" class="site-header__cart" title="Cart">
+
+                            <i class="icon anm anm-bag-l"></i>
+
+
+                        </a>
+                    </div>
+                    <i>@Html.Action("BagCart", "ShoppingCart")</i>
+                </div>
+        </div>
+        <br /><br /><br /><br />
+        <div class="loader"></div>
+        <div class="center">
+            @RenderBody()
+        </div>
+        <!--End Body Content-->
+        <!--End Footer-->
+        <!--Scoll Top-->
+        <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+        <!--End Scoll Top-->
+        <!--Footer-->
+        <footer id="footer">
+            <div class="site-footer">
+                <div class="container">
+                    <!--Footer Links-->
+                    <div class="footer-top">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
+                                <h4 class="h4">Danh Mục</h4>
+                                <ul>
+                                    <li><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+                                    <li><a href="@Url.Action("cart", "Home")">Giỏ hàng</a></li>
+                                    <li>@{Html.RenderAction("Index", "Style");}</li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
+                                <h4 class="h4">Thông Tin</h4>
+                                <ul>
+                                    <li><a href="@Url.Action("about_us", "Home")">Giới thiệu về chúng tôi</a></li>
+                                    <li><a href="@Url.Action("checkout", "Home")">Kiểm Tra</a></li>
+                                    <li><a href="@Url.Action("register", "Home")">Đăng ký</a></li>
+                                    <li><a href="@Url.Action("faqs", "Home")">Phản hồi</a></li>
+                                    <li><a href="@Url.Action("login", "Home")">Đăng nhập</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-3 col-lg-3 footer-links">
+                                <h4 class="h4">Thông tin liên hệ</h4>
+                                <ul>
+                                    <li>HoLine:0868322170 (8:00-21:00) </li>
+                                    <li><a href="#">Hợp tác kinh doanh: 22dh113663</a></li>
+                                    <li><a href="#">Hợp tác truyền thông: T22204</a></li>
+                                    <li><a href="#">Hợp tác mặt bằng: T22204</a></li>
+                                    <li><a href="#">Tuyển dụng: Nhóm 1</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-3 col-lg-3 contact-box">
+                                <h4 class="h4">Kết nối với chúng tôi</h4>
+                                <ul class="addressFooter">
+                                    <li><i class="icon anm anm-map-marker-al"></i><p>104<br>Phạm Hữu Lầu</p></li>
+                                    <li class="phone"><i class="icon anm anm-phone-s"></i><p>(440) 000 000 0000</p></li>
+                                    <li class="email"><i class="icon anm anm-envelope-l"></i><p>sales@yousite.com</p></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Footer Links-->
+                    <hr>
+                    <div class="footer-bottom">
+                        <div class="row">
+                            <!--Footer Copyright-->
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 order-1 order-md-0 order-lg-0 order-sm-1 copyright text-sm-center text-md-left text-lg-left"><span></span> <a href="templateshub.net">Templates Hub</a></div>
+                            <!--End Footer Copyright-->
+                            <!--Footer Payment Icon-->
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 order-0 order-md-1 order-lg-1 order-sm-0 payment-icons text-right text-md-center">
+                                <ul class="payment-icons list--inline">
+                                    <li><i class="icon fa fa-cc-visa" aria-hidden="true"></i></li>
+                                    <li><i class="icon fa fa-cc-mastercard" aria-hidden="true"></i></li>
+                                    <li><i class="icon fa fa-cc-discover" aria-hidden="true"></i></li>
+                                    <li><i class="icon fa fa-cc-paypal" aria-hidden="true"></i></li>
+                                    <li><i class="icon fa fa-cc-amex" aria-hidden="true"></i></li>
+                                    <li><i class="icon fa fa-credit-card" aria-hidden="true"></i></li>
+                                </ul>
+                            </div>
+                            <!--End Footer Payment Icon-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Including Jquery -->
+
+        <!-- Including Jquery -->
+        <script src="~/Scripts/js/vendor/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/js/vendor/jquery.cookie.js"></script>
+        <script src="~/Scripts/js/vendor/modernizr-3.6.0.min.js"></script>
+        <script src="~/Scripts/js/vendor/wow.min.js"></script>
+        <!-- Including Javascript -->
+        <script src="~/Scripts/js/bootstrap.min.js"></script>
+        <script src="~/Scripts/js/plugins.js"></script>
+        <script src="~/Scripts/js/popper.min.js"></script>
+        <script src="~/Scripts/js/lazysizes.js"></script>
+        <script src="~/Scripts/js/main.js"></script>
+        <!-- Photoswipe Gallery -->
+        <script src="~/Scripts/js/vendor/photoswipe.min.js"></script>
+        <script src="~/Scripts/js/vendor/photoswipe-ui-default.min.js"></script>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        
+
+    </body>
+    </html>

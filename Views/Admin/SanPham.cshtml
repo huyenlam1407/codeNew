@@ -1,0 +1,70 @@
+﻿@model IEnumerable<PROJECT.Models.tblProduct>
+
+@{
+    ViewBag.Title = "Quản lý sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
+}
+
+<h2>Trang quản lý sản phẩm</h2>
+@if (Model != null)
+{
+   
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.codeProduct)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nameProduct)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.priceProductInput)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.priceProductDown)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IDStyle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.imageProduct1)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.codeProduct)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nameProduct)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.priceProductInput)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.priceProductDown)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IDStyle)
+                    </td>
+                    <td>
+                        <img src=" @Html.DisplayFor(modelItem => item.imageProduct1)" style="width:100px;height:100px;" />
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    
+}

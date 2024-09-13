@@ -1,0 +1,27 @@
+﻿
+@model IEnumerable<PROJECT.Models.tblStyle>
+<style>
+    .fm-link:hover {
+        color: #D3D3D3;
+    }
+
+    .fm-link {
+        text-decoration: none;
+        color: #808080;
+        font-size: 18px;
+        padding: 8px;
+    }
+
+    
+</style>
+
+<div class="nameStyle">
+    @foreach (var style in Model)
+    {
+        @*<h2>@Html.DisplayFor(model => style.nameStyle)</h2>*@
+        <h3>@Html.ActionLink(style.nameStyle, "Index", "Home",new { style= style.ID}, new { @class = "fm-link" })</h3>
+
+    }
+</div>
+
+

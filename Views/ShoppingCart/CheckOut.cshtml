@@ -1,0 +1,84 @@
+﻿@model PROJECT.Models.Cart
+
+@{
+    ViewBag.Title = "Thanh Toán";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .information {
+        margin: 50px;
+        margin-left: 500px;
+        width: 550px;
+        padding: 50px;
+        height: auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nhap {
+        width: 400px;
+        height: 35px;
+    }
+
+    h2 {
+        margin: 30px;
+        font-weight: bold;
+        color: red;
+        font-family: 'Roboto Condensed', sans-serif;
+        text-align: center;
+    }
+
+    .thongtin {
+        font-weight: bold;
+        color: darkblue;
+        font-size: 15px;
+        font-family: 'Roboto Condensed', sans-serif;
+    }
+    
+</style>
+@if (Session["userID"] != null)
+{
+    <h2>THÔNG TIN GIAO HÀNG CỦA BẠN</h2>
+    using (Html.BeginForm("AuthenCheckOut", "ShoppingCart", FormMethod.Post))
+    {
+        <div class="row billing-fields" style="margin-left:500px;">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 sm-margin-30px-bottom">
+                <div class="create-ac-content bg-light-gray padding-20px-all">
+                    <fieldset>
+                        <h2 class="login-title mb-3">Thông tin</h2>
+                        <div class="row">
+                            <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                                <label for="input-firstname">Tên của bạn <span class="required-f">*</span></label>
+                                <input name="NameCus" value="" id="input-firstname" type="text" required>
+                            </div>
+                            <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                                <label for="input-lastname">CMND <span class="required-f">*</span></label>
+                                <input name="CodeCus" value="" id="input-lastname" type="text" required>
+                            </div>
+                            <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                                <label for="input-firstname">Địa chỉ<span class="required-f">*</span></label>
+                                <input name="AddressCus" value="" id="input-firstname" type="text" required>
+                            </div>
+                            <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                                <label for="input-email">Email<span class="required-f">*</span></label>
+                                <input name="Email" value="" id="input-email" type="email" required>
+                            </div>
+                            <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                                <label for="input-telephone">Sđt <span class="required-f">*</span></label>
+                                <input name="PhoneCus" value="" id="input-telephone" type="tel" required>
+                            </div>
+                        </div>
+                        <input type="submit" class="my-1 btn btn-success btn-block" value="Thanh Toán" />
+                    </fieldset>
+                </div>
+            </div>
+            </div>  
+            }
+            }
+            else
+            {
+            <div style="text-align:center;">
+                <h2 style="color:red"><em>Bạn vui lòng đăng nhập để thực hiện chức năng này</em></h2>
+                <a href="@Url.Action("Login","Login")" class="my-1 btn btn-success btn-block" style="width:150px;"> Đăng nhập </a>
+            </div>
+            }

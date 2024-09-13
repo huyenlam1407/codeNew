@@ -1,0 +1,435 @@
+﻿<!-- Thêm thư viện & thay đổi mô hình để sử dụng thư viện phân trang -->
+@using PagedList.Mvc;
+@model PagedList.IPagedList<PROJECT.Models.tblProduct>
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/cshtml; charset=utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/modernizr")
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Content/images/favicon.png" />
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="~/Content/css/plugins.css">
+
+    <!-- Bootstap CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+    <link rel="stylesheet" href="~/Content/css/stylenen.css">
+    <link href="~/Scripts/js/vendor/boostrap1.js" rel="stylesheet">
+    <style>
+        .box-des {
+            display: -webkit-box;
+            max-height: 3.2rem;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            -webkit-line-clamp: 2;
+            line-height: 1.6rem;
+        }
+
+        .proLoop-labels .proLoop-label-new {
+            border: 1px solid #fe2d05;
+            background: #fe2d05;
+        }
+
+        .proLoop-labels span {
+            display: inline-flex;
+            color: #fff;
+            font-size: 9px;
+            margin-right: 3px;
+            padding: 2px 4px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            line-height: 18px;
+        }
+
+        .proLoop-labels .proLoop-label-freeship {
+            background: #002351;
+            border: 1px solid #002351;
+        }
+
+        .proLoop-labels span {
+            display: inline-flex;
+            color: #fff;
+            font-size: 9px;
+            margin-right: 3px;
+            padding: 2px 4px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            line-height: 18px;
+        }
+
+        .flexloopaction > div:last-child {
+            display: flex;
+            align-items: center;
+        }
+
+        button:not(:disabled) {
+            cursor: pointer;
+        }
+
+        .js-favorites {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            color: #212121;
+        }
+
+        button {
+            padding: 0;
+            margin: 0;
+            outline: 0;
+            background-clip: padding-box;
+            border: none;
+            box-shadow: none;
+            background: none;
+        }
+
+        [type=button], [type=reset], [type=submit], button {
+            -webkit-appearance: button;
+        }
+
+        button, select {
+            text-transform: none;
+        }
+
+        button, input {
+            overflow: visible;
+        }
+
+        button, input, optgroup, select, textarea {
+            margin: 0;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+
+        button {
+            border-radius: 0;
+        }
+
+        .productList {
+            text-align: left;
+        }
+    </style>
+</head>
+<body class="template-product belle">
+
+    <div id="slider"></div>
+    <script src="~/Scripts/js/vendor/JavaScript1.js"></script>
+    <br />
+
+    <div id="page-content">
+
+        <div class="container">
+            <div class="row">
+                <!--Sidebar-->
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 sidebar filterbar">
+                    <div class="closeFilter d-block d-md-none d-lg-none"><i class="icon icon anm anm-times-l"></i></div>
+                    <div class="sidebar_tags">
+                        <!--Categories-->
+                        <div class="sidebar_widget categories filter-widget">
+                            <div class="widget-title"><h2>Thể loại</h2></div>
+                            <div class="widget-content">
+                                <ul class="sidebar_categories">
+                                    <li class="level1 sub-level">
+                                        @{Html.RenderAction("Index", "Style");}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--Categories-->
+                        <!--Price Filter-->
+                        <div class="sidebar_widget filterBox filter-widget">
+                            <div class="widget-title">
+                                <h2>Giá</h2>
+                            </div>
+                            <form action="#" method="post" class="price-filter">
+                                <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                                    <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                    <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p class="no-margin"><input id="amount" type="text"></p>
+                                    </div>
+                                    <div class="col-6 text-right margin-25px-top">
+                                        <button class="btn btn-secondary btn--small">Lọc</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!--End Price Filter-->
+                        <!--Brand-->
+                        <div class="sidebar_widget filterBox filter-widget">
+                            <div class="widget-title"><h2></h2></div>
+                            <ul>
+                                <li>
+                                    <input type="checkbox" value="allen-vela" id="check1">
+                                    <label for="check1"><span><span></span></span> Dưỡng thể </label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="oxymat" id="check3">
+                                    <label for="check3"><span><span></span></span> Chăm sóc tóc </label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="vanelas" id="check4">
+                                    <label for="check4"><span><span></span></span> Trang điểm </label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="pagini" id="check5">
+                                    <label for="check5"><span><span></span></span> Nước hoa </label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="monark" id="check6">
+                                    <label for="check6"><span><span></span></span> Chăm sóc da mặt</label>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--End Brand-->
+                        <!--Popular Products-->
+                        <div class="sidebar_widget">
+                            <div class="widget-title"><h2>Sản phẩm phổ biến</h2></div>
+                            <div class="widget-content">
+                                <div class="list list-sidebar-products">
+                                    <div class="grid">
+                                        <div class="grid__item">
+                                            <div class="mini-list-item">
+                                                <div class="mini-view_image">
+                                                    <a class="grid-view-item__link" href="@Url.Action("produce_layout_1", "Home",new { id = 69 })">
+                                                        <img class="grid-view-item__image" src="~/Content/images/DEMO/make-up/eye_make/eyebrows/tải xuống (1).jpg" />
+                                                    </a>
+                                                </div>
+                                                <div class="details">
+                                                    <a class="grid-view-item__title" href="@Url.Action("produce_layout_1", "Home",new { id = 69 })">Chì Kẻ Mày Hai Đầu Tiện Lợi Cho Lông Mày Hoàn Hảo Lemonade Want It Got It Dual Eyebrow</a>
+                                                    <div class="grid-view-item__meta"><span class="product-price__price"><span class="money">100,000đ</span></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid__item">
+                                            <div class="mini-list-item">
+                                                <div class="mini-view_image">
+                                                    <a class="grid-view-item__link" href="@Url.Action("produce_layout_1", "Home",new { id = 40 })">
+                                                        <img class="grid-view-item__image" src="~/Content/images/DEMO/facial_care/skin solution/against aging/tải xuống (2).jpg" />
+                                                    </a>
+                                                </div>
+                                                <div class="details">
+                                                    <a class="grid-view-item__title" href="@Url.Action("produce_layout_1", "Home",new { id = 40 })">Combo Mặt Nạ (Dưỡng Trắng, Cấp Ẩm, Chống Lão Hóa, Giảm Mụn, Phục Hồi Da </a>
+                                                    <div class="grid-view-item__meta"><span class="product-price__price"><span class="money">100,000đ</span></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid__item">
+                                            <div class="mini-list-item">
+                                                <div class="mini-view_image">
+                                                    <a class="grid-view-item__link" href="@Url.Action("produce_layout_1", "Home",new { id = 117 })">
+                                                        <img class="grid-view-item__image" src="~/Content/images/DEMO/perfume/bodymist/tải xuống (1).jpg" />
+                                                    </a>
+                                                </div>
+                                                <div class="details">
+                                                    <a class="grid-view-item__title" href="@Url.Action("produce_layout_1", "Home",new { id = 117 })">[2 Items] Bộ Đôi Sữa Dưỡng Thể & Xịt Thơm Toàn Thân Hương Nước Hoa Malissa Kiss Whitening Body Lotion & Perfume Mist - Wanderlust</a>
+                                                    <div class="grid-view-item__meta"><span class="product-price__price"><span class="money">100,000đ</span></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Popular Products-->
+                        <!--Banner-->
+                        <div class="sidebar_widget static-banner">
+                            <img src="~/Content/images/DEMO/quangcao/tải xuống.jpg" alt="" />
+                        </div>
+                        <!--Banner-->
+                        <!--Information-->
+                        <div class="sidebar_widget">
+                            <div class="widget-title"><h2>Thông tin</h2></div>
+                            <div class="widget-content"><p>Sử dụng văn bản này để chia sẻ thông tin về thương hiệu của bạn với khách hàng. Mô tả sản phẩm, chia sẻ thông báo hoặc chào mừng khách hàng đến với cửa hàng của bạn.</p></div>
+                        </div>
+                        <!--end Information-->
+                        <!--Product Tags-->
+                        <div class="sidebar_widget">
+                            <div class="widget-title">
+                                <h2>
+                                    Tags sản phẩm
+                                </h2>
+                            </div>
+                            <div class="widget-content">
+                                <ul class="product-tags">
+                                    <li><a href="@Url.Action("Index", "Home")" title="Show products matching tag 100,000đ - 400,000đ">100,000đ - 400,000đ</a></li>
+                                    <li><a href="@Url.Action("Index", "Home")" title="Show products matching tag 400,000đ - 600,000đ">400,000đ - 600,000đ</a></li>
+                                    <li><a href="@Url.Action("Index", "Home")" title="Show products matching tag 600,000đ - 800,000đ">600,000đ - $800,000đ</a></li>
+                                    <li><a href="@Url.Action("Index", "Home")" title="Show products matching tag Above 800,000đ">Trên 800,000đ</a></li>
+                                    <li><a href="@Url.Action("Index", "Home")" title="Show products matching tag Bodycare">Dưỡng thể</a></li>
+                                    <li><a href="@Url.Action("Index", "Home")" title="Show products matching tag Haircare">Chăm sóc tóc</a></li>
+                                    <li><a href="@Url.Action("Index", "Home")" title="Show products matching tag Perfume">Nước hoa</a></li>
+                                    <li><a href="@Url.Action("Index", "Home")" title="Show products matching tag Facialcare">Chăm sóc da mặt</a></li>
+                                    <li><a href="@Url.Action("Index", "Home")" title="Show products matching tag Makeup">Trang điểm</a></li>
+                                    <li><a href="@Url.Action("Login", "Login")" title="Show products matching tag Login">Đăng nhập</a></li>
+                                    <li><a href="@Url.Action("Register", "Login")" title="Show products matching tag Register">Đăng xuất</a></li>
+                                    <li><a href="@Url.Action("faqs", "Home")" title="Show products matching tag Faqs">Phản hồi của khác hàng</a></li>
+                                    <li><a href="@Url.Action("checkout", "Home")" title="Show products matching tag Checkout">Kiểm tra</a></li>
+                                    <li><a href="@Url.Action("cart", "Home")" title="Show products matching tag Cart">Giỏ hàng</a></li>
+                                    <li><a href="@Url.Action("about_us", "Home")" title="Show products matching tag Aboutus">Giới thiệu về chúng tôi</a></li>
+                                </ul>
+                                <span class="btn btn--small btnview">Tất cả</span>
+                            </div>
+                        </div>
+                        <!--end Product Tags-->
+                    </div>
+                </div>
+                <!--End Sidebar-->
+                <!--Main Content-->
+                <div class="col-12 col-sm-12 col-md-9 col-lg-9 main-col">
+                    <!--Toolbar-->
+                    <button type="button" class="btn btn-filter d-block d-md-none d-lg-none">Bộ lọc sản phẩm</button>
+                    <div class="toolbar">
+                        <div class="filters-toolbar-wrapper">
+                            <div class="row">
+                                <div class="col-4 col-md-4 col-lg-4 filters-toolbar__item collection-view-as d-flex justify-content-start align-items-center">
+                                    <a href="shop-left-sidebar.cshtml" title="Grid View" class="change-view change-view--active">
+                                        <img src="~/Content/images/grid.jpg" alt="Grid" />
+                                    </a>
+                                    <a href="shop-listview.cshtml" title="List View" class="change-view">
+                                        <img src="~/Content/images/list.jpg" alt="List" />
+                                    </a>
+                                </div>
+                                <div class="col-4 col-md-4 col-lg-4 text-center filters-toolbar__item filters-toolbar__item--count d-flex justify-content-center align-items-center">
+                                    <span class="filters-toolbar__product-count"></span>
+                                </div>
+                                <div class="col-4 col-md-4 col-lg-4 text-right">
+                                    <div class="filters-toolbar__item">
+                                        <label for="SortBy" class="hidden">Sắp xếp</label>
+                                        <select name="SortBy" id="SortBy" class="filters-toolbar__input filters-toolbar__input--sort">
+                                            <option value="title-ascending" selected="selected">Sắp xếp</option>
+                                            <option>Bán nhìu nhất</option>
+                                            <option>Sắp xếp từ trên xuống dưới, A-Z</option>
+                                            <option>Sắp xếp từ dưới lên trên, Z-A</option>
+                                            <option>Gía tiền từ cao đến thấp/option>
+                                            <option>Giá tiền từ thấp đến cao</option>
+                                            <option>Hàng mới</option>
+                                            <option>Hàng cũ</option>
+                                        </select>
+                                        <input class="collection-header__default-sort" type="hidden" value="manual">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Toolbar-->
+                    <!--End Toolbar-->
+
+                    <div class="grid-products grid--view-items" style="display: flex; flex-wrap: wrap;">
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="row">
+                                <div class="col-6 col-sm-6 col-md-4 col-lg-4 item">
+                                    <!--start product details -->
+                                    <hr>
+                                    <div class="productList">
+
+                                        <div style="width:200px;">
+                                            <div style="padding:20px;flex:1">
+                                                <a class="product_link" href="@Url.Action("produce_layout_1", "Home", new { id = @Html.DisplayFor(modelItem => item.ID) })">
+                                                    <img src="@Html.DisplayFor(modelItem => item.imageProduct1)">
+                                                    <div class="proLoop-labels">
+                                                        <span class="proLoop-label-freeship">Miễn Phí giao hàng từ Hà Nội đến TPHCM</span>
+                                                        <span class="proLoop-label-new">Mới</span>
+                                                    </div>
+                                                    <h3 class="box-des">@Html.DisplayFor(modelItem => item.nameProduct)</h3>
+                                                    <p style="color:red; margin-right:20px;font-size:20px;font-weight:bold;font-style:italic; float:left;">@Html.DisplayFor(modelItem => item.priceProductInput)</p>
+                                                    <del class="gia" style="float:right"><i>@Html.DisplayFor(modelItem => item.priceProductDown)</i></del>
+                                                    <details style="display:none;">Tinh Chất Dưỡng Thể Body Chống Nắng & Dưỡng Sáng Da Toàn Thân Vaseline Healthy Bright là sữa dưỡng thể thuộc thương hiệu Vaseline tập trung cải thiện những vấn đề trên da khác nhau và bảo vệ da trước tác hại từ môi trường xung quanh. Đặc biệt tinh chất dưỡng thể chứa các giọt Vaseline Jelly giúp khóa ẩm từ sâu bên trong và cân bằng độ ẩm cho da.</details>
+                                                </a>
+
+
+                                                <div class="product_review" style="clear:both">
+                                                    <i class="font-13 fa fa-star"></i>
+                                                    <i class="font-13 fa fa-star"></i>
+                                                    <i class="font-13 fa fa-star"></i>
+                                                    <i class="font-13 fa fa-star"></i>
+                                                    <i class="font-13 fa fa-star"></i>
+                                                </div>
+                                                <div class="" style="margin-left:130px;">
+                                                    <button class="js-favorites" data-id="1032061646" data-handle="khau-trang-y-te-wakamono">
+                                                        <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M11.5322 4.01538C11.6056 4.21005 11.7919 4.33889 12 4.33889C12.2081 4.33889 12.3944 4.21005 12.4678 4.01538C13.2238 2.01148 15.5765 0.5 18 0.5C21.0434 0.5 23.5 2.88657 23.5 5.75833C23.5 8.09972 22.4687 10.4862 20.4637 12.9268C18.5068 15.3087 15.6467 17.7114 12 20.1309C8.35334 17.7114 5.49323 15.3087 3.53634 12.9268C1.53131 10.4862 0.5 8.09972 0.5 5.75833C0.5 2.86737 2.93657 0.5 6 0.5C8.42355 0.5 10.7762 2.01148 11.5322 4.01538Z" stroke="#222222" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <a href="/ShoppingCart/AddToCart/@Html.DisplayFor(modelItem=> item.ID)" class="giohang">
+                                                    <img src="~/Content/images/giohang.png" style="width:30px;height:30px;" />
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <!--End Main Content-->
+                    <!-- Thêm đoạn mã để hiển thị số trang và số trang hiện tại -->
+                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                    <!--Control PagedListPager: mô tả mô hình với số trang là liên kết với tham số "Index" và tham số page-->
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                    <!-- Kết thúc -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+    <!--End Scoll Top-->
+    <!-- Including Jquery -->
+    <!-- Including Jquery -->
+    <script src="~/Scripts/js/vendor/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/js/vendor/jquery.cookie.js"></script>
+    <script src="~/Scripts/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="~/Scripts/js/vendor/wow.min.js"></script>
+    <!-- Including Javascript -->
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/plugins.js"></script>
+    <script src="~/Scripts/js/popper.min.js"></script>
+    <script src="~/Scripts/js/lazysizes.js"></script>
+    <script src="~/Scripts/js/main.js"></script>
+    <!-- Photoswipe Gallery -->
+    <script src="~/Scripts/js/vendor/photoswipe.min.js"></script>
+    <script src="~/Scripts/js/vendor/photoswipe-ui-default.min.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+</body>
+</html>
+
+

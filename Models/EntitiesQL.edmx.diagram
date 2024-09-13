@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="31e73fa4eabf46a092e37d2e3b529230" Name="Diagram1">
+        <EntityTypeShape EntityType="DBQLBANHANGModel.tblBill" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLBANHANGModel.tblCustumer" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLBANHANGModel.tblDetailBill" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLBANHANGModel.tblProduct" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLBANHANGModel.tblStaff" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLBANHANGModel.tblStyle" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLBANHANGModel.tblSupplierProduct" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBQLBANHANGModel.tblUser" Width="1.5" PointX="5.75" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="DBQLBANHANGModel.FK__tblBill__IDStaff__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLBANHANGModel.FK__tblDetail__IDBil__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLBANHANGModel.fk_tblbill_code" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLBANHANGModel.FK__tblDetail__CodeP__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLBANHANGModel.FK__tblProduc__IDSty__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="DBQLBANHANGModel.FK__tblProduc__idSup__32E0915F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

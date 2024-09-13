@@ -1,0 +1,33 @@
+﻿@model PROJECT.Models.tblStyle
+
+@{
+    ViewBag.Title = "Xóa danh mục";
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn có chắc chắn xóa danh mục này?</h3>
+<div>
+    <h4>tblStyle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nameStyle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nameStyle)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "DanhMuc")
+        </div>
+    }
+</div>

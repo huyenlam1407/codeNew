@@ -1,0 +1,27 @@
+﻿@model PROJECT.Models.tblStyle
+
+@{
+    ViewBag.Title = "Details1";
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Danh mục</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nameStyle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nameStyle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit1", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "DanhMuc")
+</p>

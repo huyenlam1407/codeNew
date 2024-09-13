@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Đặt hàng thành công";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    h2{
+        color:black;
+        font-weight:bold;
+    }
+    
+    body{
+        text-align:center;
+        
+    }
+    .complete{
+        height:500px;
+        margin:100px;
+    }
+    btn-block btn-success{
+        border-radius:2px;
+        padding:10px;
+       
+        
+    }
+</style>
+<div class="complete">
+    <h2>Bạn đã đặt hàng thành công.</h2>
+    <h3>Bạn sẽ nhận được hàng trong vòng 2-3 ngày khu vực TPHCM, 5-7 ngày đối với các khu vực khác</h3>
+    <h4>Xin chân thành cảm ơn!</h4>
+    <a href="@Url.Action("Index","Home")" class="my-1 btn btn-success btn-block"><p style="font-size:20px; color:white;">Tiếp tục mua sắm</p></a>
+</div>

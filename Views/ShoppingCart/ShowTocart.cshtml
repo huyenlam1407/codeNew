@@ -1,0 +1,191 @@
+﻿@model PROJECT.Models.Cart
+
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+   
+    <meta name="description" content="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Content/images/favicon.png" />
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="~/Content/css/plugins.css">
+    <!-- Bootstap CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+    <style>
+
+        .gia {
+            font-size: 17px;
+            font-weight: bold;
+            font-family: 'Roboto Condensed', sans-serif;
+            color: darkblue;
+        }
+
+        th, td {
+            padding: 25px;
+            text-align: left;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .name {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+
+        .continue {
+            color: black;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 5px;
+        }
+
+        .gia1 {
+            font-size: 25px;
+            color: orangered;
+            font-weight: bold;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        .text-center {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        body {
+            width: 100%;
+        }
+       
+    </style>
+</head>
+<body class="page-template belle">
+   
+        <!--Body Content-->
+        <div id="page-content">
+            <!--Page Title-->
+            <div class="page section-header text-center">
+                <div class="page-title">
+                    <div class="wrapper"><h1 class="page-width"> Giỏ hàng của bạn </h1></div>
+                </div>
+            </div>
+            <!--End Page Title-->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8 main-col">
+
+                        <table id="cart">
+                            <thead class="cart__row cart__header">
+                                <tr>
+                                    <th class="text-center">Tên Sản Phẩm</th>
+                                    <th class="text-center">Sản Phẩm</th>
+                                    <th class="text-center">Giá</th>
+                                    <th class="text-center">Số Lượng</th>
+                                    <th class="text-center">Tổng</th>
+                                    <th class="action">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cart-items">
+                                @foreach (var item in Model.Items)
+                                {
+                                    double total = Convert.ToDouble(item._shopping_product.priceProductInput.Value * item._shopping_quantity);
+
+                                    <tr>
+                                        <td>
+                                            <p class="name">@Html.DisplayFor(model => item._shopping_product.nameProduct)</p>
+                                        </td>
+                                        <td>
+                                            <img src="@Url.Content(item._shopping_product.imageProduct1)" style="width:100px;height:100px;" />
+                                        </td>
+                                        <td>
+                                            <p class="gia">@Html.DisplayFor(model => item._shopping_product.priceProductInput)</p>
+                                        </td>
+                                        <td>
+                                            @using (Html.BeginForm("Update_Quantity_Shopping", "ShoppingCart"))
+                                            {
+                                                <input type="hidden" value="@item._shopping_product.ID" name="ID_Product" />
+                                                <input type="number" value="@item._shopping_quantity" name="Quantity"/>
+                                                <input type="submit" value="Cập nhật" class="hidden" />
+                                            }
+                                        </td>
+                                        <td>
+                                            <p class="gia">@total.ToString("C0")</p>
+                                        </td>
+                                        <td>
+                                            <div class="delete"><a href="/ShoppingCart/RemoveCart/@item._shopping_product.ID">Xóa</a></div>
+                                        </td>
+                                    </tr>
+                                }
+                                </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4" class="text-left"><a href="@Url.Action("Index","Home")" class="btn--link cart-continue"><i class="icon icon-arrow-circle-left"></i> Tiếp tục mua sắm</a></td>
+                                    <td colspan="1" class="text-right"><button type="reset" name="update" class="btn--link cart-update"><i class="fa fa-refresh"></i> Cập nhật</button></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4 cart__footer" style="margin-left:1000px;">
+                <div class="cart-note">
+                    <div class="solid-border">
+                        <h5><label for="CartSpecialInstructions" class="cart-note__label small--text-center">Thêm ghi chú vào đơn đặt hàng của bạn</label></h5>
+                        <textarea name="note" id="CartSpecialInstructions" class="cart-note__input"></textarea>
+                    </div>
+                </div>
+                <div class="solid-border">
+                    <div class="row">
+                        <span class="col-12 col-sm-6 cart__subtotal-title"><strong>Giá</strong></span>
+                        <span class="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right"><span class="money">@Model.Total_Money().ToString("C0")</span></span>
+                    </div>
+                    <div class="cart__shipping">Vận chuyển &amp; thuế được tính khi thanh toán</div>
+                    <p class="cart_tearm">
+                        <label>
+                            <input type="checkbox" name="tearm" id="cartTearm" class="checkbox" value="tearm" required="">
+                            Tôi đồng ý với các điều khoản và điều kiện
+                        </label>
+                    </p>
+                    <a href="@Url.Action("CheckOut","ShoppingCart")"id="cartCheckout" class="btn btn--small-wide checkout">Thanh Toán</a>
+                    
+                    <div class="paymnet-img"><img src="~/Content/images/payment-img.jpg" alt="Payment"></div>
+                </div>
+
+            </div>
+        </div>
+    
+
+        <!--End Body Content-->
+        <!--Scoll Top-->
+        <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+        <!--End Scoll Top-->
+        <!-- Including Jquery -->
+        <script src="~/Scripts/js/vendor/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/js/vendor/jquery.cookie.js"></script>
+        <script src="~/Scripts/js/vendor/modernizr-3.6.0.min.js"></script>
+        <script src="~/Scripts/js/vendor/wow.min.js"></script>
+        <!-- Including Javascript -->
+        <script src="~/Scripts/js/bootstrap.min.js"></script>
+        <script src="~/Scripts/js/plugins.js"></script>
+        <script src="~/Scripts/js/popper.min.js"></script>
+        <script src="~/Scripts/js/lazysizes.js"></script>
+        <script src="~/Scripts/js/main.js"></script>
+    </body>
+</html>

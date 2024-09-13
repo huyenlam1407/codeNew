@@ -1,0 +1,153 @@
+﻿@model PROJECT.Models.tblUser
+
+@{
+    ViewBag.Title = "Đăng nhập Admin";
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
+}
+
+<style>
+    body {
+        width: 100%;
+        color: black;
+        line-height: 20px;
+        font-size: 14px;
+        background: #fff;
+        font-family: sans-serif;
+        overflow-x: hidden;
+        position: initial;
+        font-weight: 400;
+        font-family: 'Product sans', sans-serif;
+        background-color: #f4f4f4;
+        height:500px;
+    }
+
+    a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .container1 {
+        max-width: 500px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .form-group {
+        margin: 15px 0;
+    }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+    .dangnhap {
+        background-color: black;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    form action > a:current {
+    }
+
+    .google {
+        margin-top: 30px;
+        background-color: #db4a39;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .facebook {
+        margin-top: 10px;
+        background-color: #3b5998;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    em {
+        color: red;
+    }
+</style>
+@using (Html.BeginForm("AuthenLogin", "Admin", FormMethod.Post))
+{
+    <div class="container1">
+        <h1 style="text-align:center">ĐĂNG NHẬP</h1>
+        <div class="note-register">
+            Trang quản lý sản phẩm
+        </div>
+        <form action="login.php" method="post">
+            <div class="form-group">
+                <label for="login-username">@Html.DisplayNameFor(m => m.userName)</label>
+                @Html.TextBoxFor(m => m.userName)
+                <em>
+                    @Html.ValidationMessageFor(m => m.userName)
+                    @if (ViewBag.ErrorName != null)
+                    {
+                        <em> @ViewBag.ErrorName</em>
+                    }
+                </em>
+            </div>
+            <div class="form-group">
+                <label for="login-password">@Html.DisplayNameFor(m => m.userPass)</label>
+                @Html.PasswordFor(m => m.userPass)
+                <em>
+                    @Html.ValidationMessageFor(m => m.userPass)
+                    @if (ViewBag.ErrorPass != null)
+                    {
+                        <em> @ViewBag.ErrorPass</em>
+                    }
+                </em>
+            </div>
+            <div class="form-group">
+                <label for="login-password">@Html.DisplayNameFor(m => m.userRole)</label>
+                @Html.TextBoxFor(m => m.userRole)
+                <em>
+                    @Html.ValidationMessageFor(m => m.userRole)
+                    @if (ViewBag.ErrorRole != null)
+                    {
+                        <em> @ViewBag.ErrorRole</em>
+                    }
+                </em>
+            </div>
+            <button type="submit" class="dangnhap">ĐĂNG NHẬP</button>
+
+        </form>
+    </div>
+}
+
+

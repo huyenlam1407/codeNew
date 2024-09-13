@@ -1,0 +1,70 @@
+﻿@model IEnumerable<PROJECT.Models.ProductView>
+
+@{
+    ViewBag.Title = "Danh sách đơn hàng";
+    Layout = "~/Views/Shared/_LayoutAD.cshtml";
+}
+
+<h2>Danh sách đơn hàng</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDBill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodeProduct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantityProduct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceProductBuying)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalMoney)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codeCus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BillDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDBill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodeProduct)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantityProduct)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceProductBuying)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalMoney)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codeCus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BillDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBQLBANHANGModelStoreContainer" CdmEntityContainer="DBQLBANHANGEntities">
+    <EntitySetMapping Name="tblBills">
+      <EntityTypeMapping TypeName="DBQLBANHANGModel.tblBill">
+        <MappingFragment StoreEntitySet="tblBill">
+          <ScalarProperty Name="IDBill" ColumnName="IDBill" />
+          <ScalarProperty Name="BillDate" ColumnName="BillDate" />
+          <ScalarProperty Name="IDStaff" ColumnName="IDStaff" />
+          <ScalarProperty Name="TotalPay" ColumnName="TotalPay" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="codeCus" ColumnName="codeCus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblCustumers">
+      <EntityTypeMapping TypeName="DBQLBANHANGModel.tblCustumer">
+        <MappingFragment StoreEntitySet="tblCustumer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="codeCus" ColumnName="codeCus" />
+          <ScalarProperty Name="nameCus" ColumnName="nameCus" />
+          <ScalarProperty Name="addressCus" ColumnName="addressCus" />
+          <ScalarProperty Name="phoneCus" ColumnName="phoneCus" />
+          <ScalarProperty Name="emailCus" ColumnName="emailCus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDetailBills">
+      <EntityTypeMapping TypeName="DBQLBANHANGModel.tblDetailBill">
+        <MappingFragment StoreEntitySet="tblDetailBill">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDBill" ColumnName="IDBill" />
+          <ScalarProperty Name="CodeProduct" ColumnName="CodeProduct" />
+          <ScalarProperty Name="QuantityProduct" ColumnName="QuantityProduct" />
+          <ScalarProperty Name="PriceProductBuying" ColumnName="PriceProductBuying" />
+          <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProducts">
+      <EntityTypeMapping TypeName="DBQLBANHANGModel.tblProduct">
+        <MappingFragment StoreEntitySet="tblProduct">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="codeProduct" ColumnName="codeProduct" />
+          <ScalarProperty Name="nameProduct" ColumnName="nameProduct" />
+          <ScalarProperty Name="descriptionProduct" ColumnName="descriptionProduct" />
+          <ScalarProperty Name="idSup" ColumnName="idSup" />
+          <ScalarProperty Name="quantityProductInput" ColumnName="quantityProductInput" />
+          <ScalarProperty Name="priceProductInput" ColumnName="priceProductInput" />
+          <ScalarProperty Name="priceProductDown" ColumnName="priceProductDown" />
+          <ScalarProperty Name="colorPro" ColumnName="colorPro" />
+          <ScalarProperty Name="sizePro" ColumnName="sizePro" />
+          <ScalarProperty Name="material" ColumnName="material" />
+          <ScalarProperty Name="genderUse" ColumnName="genderUse" />
+          <ScalarProperty Name="IDStyle" ColumnName="IDStyle" />
+          <ScalarProperty Name="imageProduct1" ColumnName="imageProduct1" />
+          <ScalarProperty Name="imageProduct2" ColumnName="imageProduct2" />
+          <ScalarProperty Name="imageProduct3" ColumnName="imageProduct3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStaffs">
+      <EntityTypeMapping TypeName="DBQLBANHANGModel.tblStaff">
+        <MappingFragment StoreEntitySet="tblStaff">
+          <ScalarProperty Name="IDStaff" ColumnName="IDStaff" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStyles">
+      <EntityTypeMapping TypeName="DBQLBANHANGModel.tblStyle">
+        <MappingFragment StoreEntitySet="tblStyle">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="nameStyle" ColumnName="nameStyle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSupplierProducts">
+      <EntityTypeMapping TypeName="DBQLBANHANGModel.tblSupplierProduct">
+        <MappingFragment StoreEntitySet="tblSupplierProduct">
+          <ScalarProperty Name="idSup" ColumnName="idSup" />
+          <ScalarProperty Name="supplierName" ColumnName="supplierName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="DBQLBANHANGModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userPass" ColumnName="userPass" />
+          <ScalarProperty Name="userRole" ColumnName="userRole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
